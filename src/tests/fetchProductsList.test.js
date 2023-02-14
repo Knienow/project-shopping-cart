@@ -5,7 +5,7 @@ import computadorSearch from './mocks/search';
 // implemente seus testes aqui
 describe('Teste a função fetchProductsList', () => {
   it('fetchProductsList é uma função', () => {
-    expect(typeof fetchProductsList()).toBe('function');
+    expect(typeof fetchProductsList).toBe('function');
     
   });
 
@@ -27,10 +27,8 @@ describe('Teste a função fetchProductsList', () => {
     expect(result).toEqual(computadorSearch);
   });
 
-  it('ao chamar a função fetchProductsList sem atribuir parâmetros, deve retornar um erro com a mensagem "Termo de busca não informado"', async () => {
-    const emptyParameter = '';
-  
-    await expect(fetchProductsList(emptyParameter)).rejects.toThrow(
+  it('ao chamar a função fetchProductsList sem atribuir parâmetros, deve retornar um erro com a mensagem "Termo de busca não informado"', async () => {  
+    await expect(fetchProductsList()).rejects.toThrow(
       new Error('Termo de busca não informado')
     );
   });
