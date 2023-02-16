@@ -52,4 +52,6 @@ const products = async () => {
   return list;
 };
 
-products();
+window.onload = async () => {
+  products();
+};
