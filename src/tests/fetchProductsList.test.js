@@ -6,24 +6,20 @@ import computadorSearch from './mocks/search';
 describe('Teste a função fetchProductsList', () => {
   it('fetchProductsList é uma função', () => {
     expect(typeof fetchProductsList).toBe('function');
-    
   });
 
   it('fetch é chamado ao executar fetchProductsList', async () => {
     await fetchProductsList('computador');
-
     expect(fetch).toHaveBeenCalled();
   });
 
   it('fetch é chamado com o endpoint correto ao executar fetchProductsList', async () => {
     await fetchProductsList('computador');
-
     expect(fetch).toHaveBeenCalledWith('https://api.mercadolibre.com/sites/MLB/search?q=computador');
   });
 
-  it('fetch é chamado com o endpoint correto ao executar fetchProductsList', async () => {
+  it('ao passar o argumento "computador", o retorno deve ser uma estrutura de dados igual ao objeto computadorSearch, que já está importado no arquivo.', async () => {
     const result = await fetchProductsList('computador');
-
     expect(result).toEqual(computadorSearch);
   });
 
