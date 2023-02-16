@@ -1,5 +1,5 @@
 import { searchCep } from './helpers/cepFunctions';
-import { fetchProductsList } from './helpers/fetchFunctions';
+import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 // import { showLoading, hideLoading } from './helpers/loading';
 import './style.css';
@@ -7,6 +7,7 @@ import './style.css';
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 
 fetchProductsList('computador').then((data) => console.log(data));
+fetchProduct('MLB1405519561').then((data) => console.log(data));
 
 const sectionProducts = document.querySelector('.products');
 
