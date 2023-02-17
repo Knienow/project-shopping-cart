@@ -1,6 +1,8 @@
 import { searchCep } from './helpers/cepFunctions';
 import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+import { createCartProductElement, createProductElement } from './helpers/shopFunctions';
+import { getSavedCartIDs } from './helpers/cartFunctions';
+
 // import { showLoading, hideLoading } from './helpers/loading';
 import './style.css';
 
@@ -52,6 +54,17 @@ const products = async () => {
   return list;
 };
 
+const dataLocalStorage = async () => {
+  const idLocalStorage = getSavedCartIDs();
+  const promisesArray = idLocalStorage.map((element) => fetchProduct(element));
+  const allPromises = await Promise.all(promisesArray);
+  allPromises.forEach((element) => {
+    const createElement = createCartProductElement(element);
+    document.querySelector('.cart__products').appendChild(createElement);
+  });
+};
+
 window.onload = async () => {
   products();
+  dataLocalStorage();
 };
